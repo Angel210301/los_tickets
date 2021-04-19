@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+    <p>{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<form action="/add_note/{{ticket.0}}" method="POST">
+
+    <div class="row">
+
+        
+
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+
+            <h5>Ticket Information</h5>
+
+            <label for="ticket">Ticket #</label>
+            <input type="int" class="form-control" name="ticket" value="{{ ticket.0 }}">
+            
+            <label for="date">Date</label>
+            <input type="datetime-local" class="form-control" name="dateStart" value="{{ ticket.1 }}">
+   
+        </div>
+
+        <div class="col-md-5">
+            <label for="subject">Subject</label>
+            <input type="text" class="form-control" name="subject" value="{{ ticket.2 }}">
+        
+            <label for="Status" class="col-sm-4 col-form-label">Status</label>
+            <select name="status" value="{{ ticket.3 }}" class="form-select form-select-sm" aria-label=".form-select-sm example" id="status">
+                <option selected>Open this select menu</option>
+                <option value="1">Open</option>
+                <option value="2">Close</option>
+            </select>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+   
+
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+
+            <h5>Time Entry Information</h5>
+
+            <div class="row p-4">
+                <div class="col-md-2">
+                    <label for="employeeEnvia">Date: </label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" id="employeeEnvia" name="employeeEnvia" value = "{{ ticket.7 }}">
+                    <label for="employeeResibe"> To </label>
+                    <input type="text" id="employeeResibe" name="employeeResibe" value = "{{ ticket.8 }}">
+                </div>
+            </div>
+    
+            <div class="form-floating col-sm-12">
+                <div class="row">
+                    <div class = "col-md-4">
+                        <label for="note" class="col-sm-4 col-form-label">Note:</label>
+                    </div>
+                    <div class="col-md-8"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <textarea class="form-control" placeholder="{{ ticket.9 }}" id="note" style="height: 100px"i value = "{{ ticket.9 }}"></textarea>
+                    </div>
+                </div>
+               
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 p-4">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <a href="/"><button type="button" class="btn btn-danger">Cancel</button></a>
+                </div>
+                <div class="col-md-8"></div>
+            </div>
+
+    
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</form>
+
+
+
+{% endblock %}

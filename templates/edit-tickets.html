@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+
+{%block content%}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+    <p>{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<form action="/update/{{ticket.0}}" method="POST">
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-5 p-6 m-4">
+    
+            
+
+            
+        
+            <div class="row">
+
+                <div class="row">
+                    <nav class="navbar navbar-light bg-light">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#">Ticket Form</a>
+                        </div>
+                    </nav>
+                </div>
+
+                <h5>Ticket Information</h5>
+
+                <div class="col">
+                    <label>Ticket #</label>
+                    <label>{{ticket.0}} </label>
+                </div>
+                
+                <div class="col">
+                    <label for="dateStart">Date</label>
+                    <input type="datetime-local" class="form-control" name="dateStart" value="{{ ticket.1 }}">
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col">
+                    <label for="subject">Subject</label>
+                    <input type="text" class="form-control" name="subject" value="{{ ticket.2 }}">
+                </div>
+                <div class="col">
+                    <label for="Status" class="col-sm-4 col-form-label">Status</label>
+                    <select name="status" value="{{ ticket.3 }}" class="form-select form-select-sm" aria-label=".form-select-sm example" id="status">
+                        <option selected>Open this select menu</option>
+                        <option value="1">Open</option>
+                        <option value="2">Close</option>
+                    </select>
+                </div>
+            </div>
+      
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="employee">Employee(s)</label>
+                    <input type="text" class="form-control" name="employee" value="{{ ticket.4 }}">
+                </div>
+            </div>
+    
+            <div class="mb-3">
+                <label for="description" class="col-sm-4 col-form-label">Description</label>
+                
+                <textarea name="description" class="form-control" id="description" rows="5" value="{{ ticket.5 }}"></textarea>
+                
+            </div>
+      
+            <!--buttons-->
+            <button type="submit" class="btn btn-success">Save</button>
+            <a href="/"><button type="button" class="btn btn-danger">Cancel</button></a>
+      
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+
+</form>
+
+
+{% endblock %}

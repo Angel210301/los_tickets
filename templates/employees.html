@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{%block content%}
+
+<form action="/add_employee" method="POST">
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-5 p-6 m-4">
+  
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Employee Form</a>
+        </div>
+      </nav>
+  
+      <!--nombre-->
+      <div class="mb-3 row">
+        <label for="inputFName" class="col-sm-4 col-form-label">First Name</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="inputFName" name="firstName">
+        </div>
+      </div>
+  
+      <!--apellido-->
+      <div class="mb-3 row">
+        <label for="LastName" class="col-sm-4 col-form-label">Last Name</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="LastName" name="lastName">
+        </div>
+      </div>
+  
+      <!--email-->
+      <div class="mb-3 row">
+        <label for="inputEmail" class="col-sm-4 col-form-label" >Email</label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control" id="inputEmail"  placeholder="name@example.com" name="email">
+        </div>
+      </div>
+  
+      <!--estatus-->
+      <div class="mb-3 row">
+        <label for="Status" class="col-sm-4 col-form-label">Status</label>
+        <div class="col-sm-8">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option selected>Open this select menu</option>
+            <option value="1">Open</option>
+            <option value="2">Close</option>
+          </select>
+        </div>
+      </div>
+  
+      <!--contraseña-->
+      <div class="mb-3 row">
+        <label for="inputPassword" class="col-sm-4 col-form-label">Password</label>
+        <div class="col-sm-8">
+          <input type="password" class="form-control" id="inputPassword" name="password">
+        </div>
+      </div>
+  
+      <!--confirmar contraseña-->
+      <div class="mb-3 row ">
+        <label for="inputPasswordR" class="col-sm-4 col-form-label">Confirm Password</label>
+        <div class="col-sm-8">
+          <input type="password" class="form-control" id="inputPasswordR" name="passwordConfirn">
+        </div>
+      </div>
+  
+      <!--buttons-->
+      <button type="submit" class="btn btn-success" >Save</button>
+      <a href="/"><button type="button" class="btn btn-danger" >Cancel</button></a>
+  
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+
+</form>
+
+{% endblock %}

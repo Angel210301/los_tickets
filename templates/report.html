@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<form action="/add_report" method="POST">
+
+  <div class="conteiner p-2">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">List of Tickets</a>
+                </div>
+            </nav>
+            
+            <div id="create">
+                <input type="datetime-local" id="dateStart" name="dateStart" value="{{ ticket.7 }}">
+                <label for="dateEnd"> To </label>
+                <input type="datetime-local" id="dateEnd" name="dateEnd" value="{{ ticket.8 }}">
+
+                <button type="success" class="btn btn-primary" >Generate</button>
+            </div>
+            
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ticket#</th>
+                    <th scope="col">Employee(s)</th>
+                    <th scope="col">Notes</th>
+                    <th scope="col">Date Start</th>
+                    <th scope="col">Date End</th>
+                    <th scope="col">Hours</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for ticket in tickets %}
+                    <tr>
+                      <td>{{ ticket.0 }}</td>
+                      <td>{{ ticket.4 }}</td>
+                      <td>{{ ticket.9 }}</td>
+                      <td>{{ ticket.7 }}</td>
+                      <td>{{ ticket.8 }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+</form>
+
+
+
+{% endblock %}

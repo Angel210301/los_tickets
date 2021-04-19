@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{%block content%}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+    <p>{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="conteiner p-2">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">List of Tickets</a>
+                </div>
+            </nav>
+            <a href="/create_ticket"><button type="button" class="btn btn-primary"  id="create">Create ticket</button></a>
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Employee(s)</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for ticket in tickets %}
+                    <tr>
+                      <td>{{ ticket.0 }}</td>
+                      <td>{{ ticket.2 }}</td>
+                      <td>{{ ticket.4 }}</td>
+                      <td>{{ ticket.1 }}</td>
+                      <td>{{ ticket.3 }}</td>
+                      <td>
+                        <a href="/create_note/{{ ticket.0 }}">Add note</a>
+                        <a href="/view/{{ ticket.0 }}">View</a>
+                        <a href="/edit/{{ ticket.0 }}">Edit</a>
+                        <a href="/delete/{{ ticket.0 }}">Delete</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+{% endblock %}
